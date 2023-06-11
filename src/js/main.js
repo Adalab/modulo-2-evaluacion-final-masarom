@@ -5,6 +5,29 @@ const ulElement = document.querySelector('.js_char_list');
 const URL = 'https://api.disneyapi.dev/character?pageSize=50';
 
 let charactersList = [];
+const charactersLS = localStorage.getItem('allCharacters');
+
+// fetch y eventos
+
+function init() {
+  if (charactersLS) {
+    charactersList = JSON.parse(localStorage.getItem('allCharacters'));
+    console.log('localStorage');
+    renderAllCharacters(charactersList, ulElement);
+  } else {
+    console.log('fetch');
+    fetch(URL)
+      .then((response) => response.json())
+      .then((content) => {
+        charactersList = content.data;
+        renderAllCharacters(charactersList, ulElement);
+        localStorage.setItem('allCharacters', JSON.stringify(charactersList));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
 
 function renderOneCharacter(character) {
   let html = `
@@ -23,9 +46,9 @@ function renderOneCharacter(character) {
   return html;
 }
 
-function renderAllCharacters() {
-  for (const eachCharacter of charactersList) {
-    ulElement.innerHTML += renderOneCharacter(eachCharacter);
+function renderAllCharacters(list, ul) {
+  for (const eachCharacter of list) {
+    ul.innerHTML += renderOneCharacter(eachCharacter);
   }
   addEventCharacter();
 }
@@ -33,32 +56,35 @@ function renderAllCharacters() {
 // Favoritos
 let favCharacters = [];
 
-function addEventCharacter() {
-  const liElementList = document.querySelectorAll('.js_character_item');
-  for (const eachLi of liElementList) {
-    eachLi.addEventListener('click', handleClickFav);
-  }
-}
-
 const handleClickFav = (ev) => {
   const id = parseInt(ev.currentTarget.id);
   const selectedCharacter = charactersList.find((item) => item._id === id);
   const indexCharacter = favCharacters.findIndex((item) => item._id === id);
-
   if (indexCharacter === -1) {
     favCharacters.push(selectedCharacter);
   }
-  console.log(favCharacters);
+  renderFavCharacters();
 };
 
-// fetch y eventos
+function addEventCharacter() {
+  const liElementList = document.querySelectorAll('.js_character_item');
+  const favLiElementList = [];
+  for (const eachLi of liElementList) {
+    eachLi.addEventListener('click', handleClickFav);
+    // añadir una clase SOLO a los marcados como favorito
+    if (eachLi.parentNode.classList.contains('character_favourite__list')) {
+      favLiElementList.push(eachLi);
+      eachLi.classList.add('fav__character');
+    }
+  }
+  console.log(favLiElementList);
+}
 
-fetch(URL)
-  .then((response) => response.json())
-  .then((content) => {
-    charactersList = content.data;
-    renderAllCharacters();
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+const ulElementFav = document.querySelector('.character_favourite__list');
+
+function renderFavCharacters() {
+  ulElementFav.innerHTML = '';
+  renderAllCharacters(favCharacters, ulElementFav);
+}
+
+init();
