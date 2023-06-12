@@ -14,7 +14,6 @@ const handleClickFav = (ev) => {
   } else {
     favCharacters.push(charactersList);
   }
-
   renderFavCharacters();
 };
 // render only fav characters in diff section than all characters
