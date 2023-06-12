@@ -17,7 +17,7 @@ function renderOneCharacter(character) {
   newLi.appendChild(newImg);
   newLi.appendChild(newPar);
   //default image
-  if (character.imageUrl === '') {
+  if (character.imageUrl === false) {
     const defaultImg = 'https://fakeimg.pl/210x295?text=Disney&font=bebas';
     newImg.src = defaultImg;
   }

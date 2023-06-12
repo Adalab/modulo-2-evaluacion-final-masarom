@@ -6,3 +6,5 @@ const charactersLS = localStorage.getItem('allCharacters');
 const ulElementFav = document.querySelector('.character_favourite__list');
 let charactersList = [];
 let favCharacters = [];
+const searchText = document.querySelector('.js_search_text');
+const searchBtn = document.querySelector('.js_search_btn');
