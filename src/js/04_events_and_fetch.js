@@ -1,12 +1,11 @@
-// fetch y eventos
-
+'use strict';
+// fetch and events
+//function to choose btw localStorage or fetch
 function init() {
   if (charactersLS) {
     charactersList = JSON.parse(localStorage.getItem('allCharacters'));
-    console.log('localStorage');
     renderAllCharacters(charactersList, ulElement);
   } else {
-    console.log('fetch');
     fetch(URL)
       .then((response) => response.json())
       .then((content) => {
@@ -26,11 +25,12 @@ function addEventCharacter() {
   const favLiElementList = [];
   for (const eachLi of liElementList) {
     eachLi.addEventListener('click', handleClickFav);
-    // añadir una clase SOLO a los marcados como favorito
+    // add new class to fav characters ONLY
     if (eachLi.parentNode.classList.contains('character_favourite__list')) {
       favLiElementList.push(eachLi);
-      eachLi.classList.add('fav__character');
+      //add styles to fav characters only
+      //eachLi.classList.add('fav__character');
+      eachLi.style.backgroundColor = 'blanchedalmond';
     }
   }
-  console.log(favLiElementList);
 }

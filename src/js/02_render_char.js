@@ -1,23 +1,32 @@
+'use strict';
+
 function renderOneCharacter(character) {
-  let html = `
-    <li class="character__item js_character_item" id="${character._id}">
-      <img class="character__item-img" src="${character.imageUrl}" alt="Disney character">
-      <p class="character__item-name">${character.name}</p>
-    </li>`;
+  //create all HTML elements
+  const newLi = document.createElement('li');
+  const newImg = document.createElement('img');
+  const newPar = document.createElement('p');
+  const newParContent = document.createTextNode(character.name);
+  // add attributes to HTML elements
+  newLi.classList.add('character__item', 'js_character_item');
+  newLi.setAttribute('id', character._id);
+  newImg.classList.add('character__item-img');
+  newImg.src = character.imageUrl;
+  newPar.classList.add('character__item-name');
+  newPar.appendChild(newParContent);
+  // add newImg and newPar to newLi
+  newLi.appendChild(newImg);
+  newLi.appendChild(newPar);
+  //default image
   if (character.imageUrl === '') {
     const defaultImg = 'https://fakeimg.pl/210x295?text=Disney&font=bebas';
-    html = `
-    <li class="character__item js_character_item" id="${character._id}">
-      <img class="character__item-img" src="${defaultImg}" alt="Disney character">
-      <p class="character__item-name">${character.name}</p>
-    </li>`;
+    newImg.src = defaultImg;
   }
-  return html;
+  return newLi;
 }
 
 function renderAllCharacters(list, ul) {
   for (const eachCharacter of list) {
-    ul.innerHTML += renderOneCharacter(eachCharacter);
+    ul.appendChild(renderOneCharacter(eachCharacter));
   }
   addEventCharacter();
 }

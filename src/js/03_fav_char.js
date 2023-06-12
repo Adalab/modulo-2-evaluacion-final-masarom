@@ -1,6 +1,6 @@
 'use strict';
-// Favoritos
-
+// Favorites
+// event click function
 const handleClickFav = (ev) => {
   const id = parseInt(ev.currentTarget.id);
   const selectedCharacter = charactersList.find((item) => item._id === id);
@@ -10,7 +10,7 @@ const handleClickFav = (ev) => {
   }
   renderFavCharacters();
 };
-
+// render only fav characters in diff section than all characters
 function renderFavCharacters() {
   ulElementFav.innerHTML = '';
   renderAllCharacters(favCharacters, ulElementFav);
