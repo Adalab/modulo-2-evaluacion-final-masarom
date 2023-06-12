@@ -29,7 +29,7 @@ function addEventCharacter() {
     if (eachLi.parentNode.classList.contains('character_favourite__list')) {
       favLiElementList.push(eachLi);
       //add styles to fav characters only
-      eachLi.classList.add('fav__character');
+      eachLi.classList.add('fav__character', 'js_fav_character');
     }
   }
 }
