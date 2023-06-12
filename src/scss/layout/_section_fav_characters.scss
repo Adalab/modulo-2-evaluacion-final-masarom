@@ -1,7 +1,21 @@
 .hidden {
-    display: none;
+  display: none;
 }
 
 .fav__character {
-    background-color: blanchedalmond;
+  background-color: blanchedalmond;
+}
+
+.fav__characters {
+  margin-bottom: 55px;
+  @media all and(min-width: 768px){
+    max-width: 35%;
+    order: 1;
+  }
+}
+
+.character_favourite__list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
