@@ -11,8 +11,8 @@ function handleClickSearch(ev) {
   //render only the filtered characters (leaving favorites ul alone)
   renderAllCharacters(filteredCharacters, ulElement);
   // check if array is empty to show error message
-  if(filteredCharacters.length === 0) {
-    const newErrorPar = document.createElement ('p');
+  if (filteredCharacters.length === 0) {
+    const newErrorPar = document.createElement('p');
     newErrorPar.classList.add('error__msg');
     const errorMsg = document.createTextNode('Lo siento, el personaje que buscas no se encuentra en la base de datos.');
     newErrorPar.appendChild(errorMsg);
