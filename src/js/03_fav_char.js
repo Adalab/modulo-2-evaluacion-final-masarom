@@ -1,5 +1,5 @@
-'use strict';
 // Favorites
+'use strict';
 // event click function
 const handleClickFav = (ev) => {
   const id = parseInt(ev.currentTarget.id);

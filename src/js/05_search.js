@@ -1,35 +1,21 @@
 // search
 'use strict';
-/* -. recoger input text value
- ** -. hacer evento click buscar
- ** -. Llamar a la API de personajes
- ** -. Comprobar si el value coincide con la API
- */
 let searchedCharacters = [];
 
 function handleClickSearch(ev) {
   ev.preventDefault();
   const valueInput = searchText.value;
-  fetch(`https://api.disneyapi.dev/character?name=${valueInput}`)
-    .then((response) => response.json())
-    .then((content) => {
-      charactersList = content.data;
-      // check if searchedCharacters is array to apply a loop or not
-      if (Array.isArray(charactersList)) {
-        for (const eachCharacter of charactersList) {
-          if (eachCharacter.name.includes(valueInput)) {
-            ulElement.innerHTML = '';
-            renderAllCharacters(charactersList, ulElement);
-          }
-        }
-      } else if (charactersList.name.includes(valueInput)) {
-        console.log(charactersList.name);
-        ulElement.innerHTML = '';
-        ulElement.appendChild(renderOneCharacter(charactersList));
-        console.log(charactersList);
-        addEventCharacter();
-      }
-    });
+  const filteredCharacters = charactersList.filter((item) =>
+    item.name.toLowerCase().includes(valueInput.toLowerCase())
+  );
+  renderAllCharacters(filteredCharacters, ulElement);
+  if(filteredCharacters !== true) {
+    const newErrorPar = document.createElement ('p');
+    newErrorPar.classList.add('error__msg');
+    const errorMsg = document.createTextNode('Lo siento, el personaje que buscas no se encuentra en la base de datos.');
+    newErrorPar.appendChild(errorMsg);
+    ulElement.appendChild(newErrorPar);
+  }
 }
 
 // event

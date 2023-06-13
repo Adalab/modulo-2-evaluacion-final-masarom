@@ -1,5 +1,5 @@
-'use strict';
 // variables
+'use strict';
 const URL = '//api.disneyapi.dev/character?pageSize=50';
 const ulElement = document.querySelector('.js_char_list');
 const charactersLS = localStorage.getItem('allCharacters');

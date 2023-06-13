@@ -1,11 +1,5 @@
-// delete function for fav characters
 'use strict';
-
-/* - añadir X a elementos favoritos exclusivamente -> div?
-** - Añadir clase a la X para colocarla donde yo quiera
-** - Añadir evento a la X para eliminar el favorito.
-
-*/
+// delete function for fav characters
 
 function createDeleteBtn() {
   // create HTML elements
@@ -38,12 +32,9 @@ function deleteFav() {
 
 function handleClickDelete(ev) {
   ev.preventDefault();
-  console.log('holi');
   const id = parseInt(ev.currentTarget.id);
-  console.log(id);
   const target = ev.target;
   if (target.nodeName.toLowerCase() === 'span') {
-    console.log('eliminar fav');
     const indexCharacter = favCharacters.findIndex((item) => item._id === id);
     favCharacters.splice(indexCharacter, 1);
     renderFavCharacters();

@@ -1,5 +1,5 @@
+//render characters
 'use strict';
-
 function renderOneCharacter(character) {
   //create all HTML elements
   const newLi = document.createElement('li');
@@ -23,8 +23,8 @@ function renderOneCharacter(character) {
   }
   return newLi;
 }
-
 function renderAllCharacters(list, ul) {
+  ul.innerHTML = '';
   for (const eachCharacter of list) {
     ul.appendChild(renderOneCharacter(eachCharacter));
   }

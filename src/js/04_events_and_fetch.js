@@ -1,5 +1,5 @@
-'use strict';
 // fetch and events
+'use strict';
 //function to choose btw localStorage or fetch
 function init() {
   if (charactersLS) {
