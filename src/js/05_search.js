@@ -9,7 +9,9 @@ function handleClickSearch(ev) {
     item.name.toLowerCase().includes(valueInput.toLowerCase())
   );
   renderAllCharacters(filteredCharacters, ulElement);
-  if(filteredCharacters === false) {
+  console.log(filteredCharacters);
+  // check if array is empty to show error message
+  if(filteredCharacters.length === 0) {
     const newErrorPar = document.createElement ('p');
     newErrorPar.classList.add('error__msg');
     const errorMsg = document.createTextNode('Lo siento, el personaje que buscas no se encuentra en la base de datos.');
