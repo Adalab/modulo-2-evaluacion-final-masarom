@@ -10,11 +10,18 @@ const handleClickFav = (ev) => {
     favCharacters.push(selectedCharacter);
   }
   renderFavCharacters();
+  // show favorites section on click
+  if (favCharacters.length > 0) {
+    favSection.classList.remove('hidden');
+  }
 };
 // render only fav characters in diff section than all characters
 function renderFavCharacters() {
-  ulElementFav.innerHTML = '';
   renderAllCharacters(favCharacters, ulElementFav);
   renderDeleteBtn();
   deleteFav();
+}
+// leave it on page recharge so that it hides favorites
+if (favCharacters.length === 0) {
+  favSection.classList.add('hidden');
 }

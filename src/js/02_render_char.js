@@ -30,4 +30,3 @@ function renderAllCharacters(list, ul) {
   }
   addEventCharacter();
 }
-

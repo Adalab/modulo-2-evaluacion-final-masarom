@@ -39,4 +39,7 @@ function handleClickDelete(ev) {
     favCharacters.splice(indexCharacter, 1);
     renderFavCharacters();
   }
+  if (favCharacters.length === 0) {
+    favSection.classList.add('hidden');
+  }
 }
