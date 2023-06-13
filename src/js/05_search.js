@@ -1,15 +1,15 @@
 // search
 'use strict';
-let searchedCharacters = [];
-
+// search function
 function handleClickSearch(ev) {
   ev.preventDefault();
   const valueInput = searchText.value;
+  //filter through charactersList array to get the ones matchin the valueInput
   const filteredCharacters = charactersList.filter((item) =>
     item.name.toLowerCase().includes(valueInput.toLowerCase())
   );
+  //render only the filtered characters (leaving favorites ul alone)
   renderAllCharacters(filteredCharacters, ulElement);
-  console.log(filteredCharacters);
   // check if array is empty to show error message
   if(filteredCharacters.length === 0) {
     const newErrorPar = document.createElement ('p');

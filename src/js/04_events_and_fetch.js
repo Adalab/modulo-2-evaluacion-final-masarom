@@ -1,6 +1,6 @@
 // fetch and events
 'use strict';
-//function to choose btw localStorage or fetch
+//function to choose between localStorage or fetch
 function init() {
   if (charactersLS) {
     charactersList = JSON.parse(localStorage.getItem('allCharacters'));
@@ -19,17 +19,3 @@ function init() {
   }
 }
 init();
-
-function addEventCharacter() {
-  const liElementList = document.querySelectorAll('.js_character_item');
-  const favLiElementList = [];
-  for (const eachLi of liElementList) {
-    eachLi.addEventListener('click', handleClickFav);
-    // add new class to fav characters ONLY
-    if (eachLi.parentNode.classList.contains('character_favourite__list')) {
-      favLiElementList.push(eachLi);
-      //add styles to fav characters only
-      eachLi.classList.add('fav__character', 'js_fav_character');
-    }
-  }
-}

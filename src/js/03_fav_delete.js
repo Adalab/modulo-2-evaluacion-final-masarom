@@ -1,6 +1,7 @@
-'use strict';
 // delete function for fav characters
+'use strict';
 
+// create delete button for every character
 function createDeleteBtn() {
   // create HTML elements
   const newDeleteBtn = document.createElement('div');
@@ -15,6 +16,7 @@ function createDeleteBtn() {
   return newDeleteBtn;
 }
 
+// render the delete button on every character(liElement)
 function renderDeleteBtn() {
   const liElementList = document.querySelectorAll('.js_fav_character');
   for (const eachLi of liElementList) {
@@ -22,6 +24,7 @@ function renderDeleteBtn() {
   }
 }
 
+// listen to the click on the button
 function deleteFav() {
   const liElementList = document.querySelectorAll('.js_fav_character');
   const deleteBtn = document.querySelector('.js_delete_btn');
@@ -29,16 +32,19 @@ function deleteFav() {
     eachLi.addEventListener('click', handleClickDelete);
   }
 }
-
+// delete function
 function handleClickDelete(ev) {
   ev.preventDefault();
   const id = parseInt(ev.currentTarget.id);
   const target = ev.target;
+  // check index to delete characters from favorites array
+  //then render favorites again
   if (target.nodeName.toLowerCase() === 'span') {
     const indexCharacter = favCharacters.findIndex((item) => item._id === id);
     favCharacters.splice(indexCharacter, 1);
     renderFavCharacters();
   }
+  // check array length to hide favorites section
   if (favCharacters.length === 0) {
     favSection.classList.add('hidden');
   }
