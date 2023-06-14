@@ -31,7 +31,7 @@ function addEventCharacter() {
     eachLi.addEventListener('click', handleClickFav);
     // push liElement and add new class to fav characters ONLY
     if (eachLi.parentNode.classList.contains('character_favourite__list')) {
-      favLiElementList.push(eachLi);
+      //favLiElementList.push(eachLi);
       //add styles to fav characters only
       eachLi.classList.add('fav__character', 'js_fav_character');
     }

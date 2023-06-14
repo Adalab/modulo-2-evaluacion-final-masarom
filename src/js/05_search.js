@@ -20,5 +20,11 @@ function handleClickSearch(ev) {
   }
 }
 
+function handleClickLog (ev) {
+  ev.preventDefault();
+  console.log(favCharacters.length);
+}
+
 // event
 searchBtn.addEventListener('click', handleClickSearch);
+logBtn.addEventListener('click', handleClickLog);
